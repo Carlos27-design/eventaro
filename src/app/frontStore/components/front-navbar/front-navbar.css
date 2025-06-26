@@ -1,0 +1,65 @@
+.navbar {
+  background-color: #007bff;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar__title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* Scroll horizontal visible */
+.event-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 0.75rem 1rem;
+  gap: 1rem;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  scrollbar-width: auto; /* Firefox */
+}
+
+.event-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.event-scroll::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+.event-scroll::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+/* Botones de tipo evento */
+.event-scroll__button {
+  flex: 0 0 auto;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.event-scroll__button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Botón activo opcional */
+.event-scroll__button--active {
+  background-color: #007bff;
+  color: white;
+}

@@ -1,1 +1,11 @@
-<p>front-navbar works!</p>
+<nav class="navbar">
+  <h2 class="navbar__title">Eventaro</h2>
+</nav>
+
+<div class="event-scroll">
+  @for(routes of routes(); track routes.id){
+  <button class="event-scroll__button" routerLink="/event/{{routes.name}}">
+    {{routes.name}}
+  </button>
+  }
+</div>

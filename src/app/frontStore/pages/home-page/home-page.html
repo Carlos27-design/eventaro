@@ -1,1 +1,13 @@
-<p>home-page works!</p>
+<h1 class="event-page__title">Todos los eventos</h1>
+
+<h2 class="event-page__subtitle">Para todos los gustos</h2>
+
+<hr class="event-page__divider" />
+
+<div class="event-page__grid">
+  @for (event of eventsResource.value(); track $index) {
+  <event-card [event]="event" />
+  } @empty {
+  <p class="event-page__empty">No se encuentran eventos</p>
+  }
+</div>

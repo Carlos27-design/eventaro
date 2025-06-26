@@ -1,0 +1,25 @@
+<div class="event-card">
+  <figure class="event-card__image-wrapper">
+    <img
+      class="event-card__image"
+      [src]="event().images | eventImage"
+      [alt]="event().name"
+    />
+  </figure>
+
+  <div class="event-card__body">
+    <h2 class="event-card__title" [routerLink]="['/event', event().id]">
+      {{ event().name }}
+    </h2>
+
+    <p class="event-card__description">
+      {{ event().description | slice:0:50 }}
+    </p>
+
+    <div class="event-card__actions">
+      <a class="event-card__link" [routerLink]="['/event', event().id]">
+        Ver Evento
+      </a>
+    </div>
+  </div>
+</div>
