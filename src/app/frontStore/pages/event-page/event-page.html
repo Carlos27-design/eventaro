@@ -1,1 +1,8 @@
-<p>event-page works!</p>
+@if(eventResource.isLoading()){
+<div class="event-page__loading">
+  <div class="event-page__loading-spinner"></div>
+  <p class="event-page__loading-text">Cargando Evento ...</p>
+</div>
+} @if(eventResource.hasValue()){
+<app-event-detail [event]="eventResource.value()" />
+}

@@ -18,6 +18,13 @@ export const frontStoreRoutes: Routes = [
         loadComponent: () =>
           import('./pages/event-page/event-page').then((m) => m.EventPage),
       },
+      {
+        path: 'events/:name',
+        loadComponent: () =>
+          import('./pages/event-by-type-event/event-by-type-event').then(
+            (m) => m.EventByTypeEvent
+          ),
+      },
     ],
   },
   {

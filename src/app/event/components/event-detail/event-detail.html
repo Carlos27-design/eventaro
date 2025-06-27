@@ -1,0 +1,28 @@
+<section class="event-detail">
+  <div class="event-detail__header">
+    <h1 class="event-detail__title">{{event().name}}</h1>
+    <p class="event-detail__date">{{event().finalDate | date: "dd/MM/yyyy"}}</p>
+  </div>
+
+  <div class="event-detail__image">
+    <img src="{{event().images | eventImage}}" alt="{{event().name}}" />
+  </div>
+
+  <div class="event-detail__info">
+    <h2 class="event-detail__subtitle">Descripción</h2>
+    <p class="event-detail__description">{{event().description}}</p>
+
+    <h2 class="event-detail__subtitle">Ubicación</h2>
+    <p class="event-detail__location">{{event().ubication.name}}</p>
+
+    <h2 class="event-detail__subtitle">Organización</h2>
+    <div class="event-detail__organization">
+      <p><strong>Nombre:</strong> {{event().organization.name}}</p>
+      <p><strong>Descripción:</strong> {{event().organization.description}}</p>
+      <p><strong>Email:</strong> {{event().organization.email}}</p>
+    </div>
+
+    <h2 class="event-detail__subtitle">Tipo de Evento</h2>
+    <p class="event-detail__type">{{event().typeEvent.name}}</p>
+  </div>
+</section>

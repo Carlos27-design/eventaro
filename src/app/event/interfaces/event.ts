@@ -1,3 +1,7 @@
+import { Organization } from '../../organization/interfaces/organization';
+import { TypeEvent } from '../../typeEvent/interfaces/type-event';
+import { Ubication } from '../../ubication/interfaces/ubication';
+
 export interface Event {
   id: string;
   name: string;
@@ -5,7 +9,7 @@ export interface Event {
   initialDate: Date;
   finalDate: Date;
   images: string[];
-  ubication: string;
-  typeEventId: string;
-  organizationId: string;
+  ubication: Ubication;
+  typeEvent: TypeEvent;
+  organization: Organization;
 }

@@ -20,6 +20,10 @@ export class EventService {
     return this._http.get<Event>(`${URL}/event/${id}`);
   }
 
+  public getEventsByTypeEvent(name: string): Observable<Event[]> {
+    return this._http.get<Event[]>(`${URL}/event/search/${name}`);
+  }
+
   public createEvent(
     eventLike: Partial<Event>,
     imageFileList: FileList
