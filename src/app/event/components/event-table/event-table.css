@@ -1,0 +1,93 @@
+.event-list {
+  max-width: 100%;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.event-list__title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.event-list__table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.event-list__head {
+  background-color: #004080;
+  color: white;
+}
+
+.event-list__row {
+  border-bottom: 1px solid #ddd;
+}
+
+.event-list__cell {
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.event-list__cell--header {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.event-list__body tr:nth-child(even) {
+  background-color: #f0f4f8;
+}
+
+.event-list__body tr:hover {
+  background-color: #e0ecf9;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.event-list__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.event-list__pagination button {
+  padding: 0.5rem 1rem;
+  background-color: #004080;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.event-list__pagination button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.event-list__pagination button:hover:not([disabled]) {
+  background-color: #0059b3;
+}
+
+@media (max-width: 640px) {
+  .event-list__pagination {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

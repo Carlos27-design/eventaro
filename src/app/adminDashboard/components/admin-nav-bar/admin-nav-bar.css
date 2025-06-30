@@ -1,0 +1,74 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  background-color: #007bff; /* azul que pediste */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar__header {
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+
+.sidebar__nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar__nav li {
+  margin: 0;
+}
+
+.sidebar__nav a {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-left: 4px solid transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.sidebar__nav a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-left: 4px solid #cce5ff;
+  color: #cce5ff;
+}
+
+.icon {
+  margin-right: 12px;
+  font-size: 1.2rem;
+  /* si usas material icons, aquí puedes poner estilo */
+}
+
+/* Contenido principal */
+.content {
+  margin-left: 260px;
+  padding: 2rem;
+}
+
+/* Responsive: sidebar oculto en pantallas pequeñas */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+  }
+  .sidebar__header h2,
+  .sidebar__nav a span:not(.icon) {
+    display: none;
+  }
+  .content {
+    margin-left: 60px;
+  }
+}

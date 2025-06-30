@@ -24,6 +24,10 @@ export class EventService {
     return this._http.get<Event[]>(`${URL}/event/search/${name}`);
   }
 
+  public getEventsAdmin(): Observable<Event[]> {
+    return this._http.get<Event[]>(`${URL}/event/admin`);
+  }
+
   public createEvent(
     eventLike: Partial<Event>,
     imageFileList: FileList
