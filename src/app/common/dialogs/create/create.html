@@ -1,0 +1,11 @@
+<div class="modal-backdrop" (click)="close.emit()"></div>
+
+<div class="modal">
+  <h2>¿Estás Seguro?</h2>
+  <p>Esta acción creará un evento. ¿Deseas Continuar?</p>
+
+  <div class="modal__actions">
+    <button class="btn" (click)="close.emit()">Cancelar</button>
+    <button class="btn btn--success" (click)="confirm.emit()">Sí, Crear</button>
+  </div>
+</div>

@@ -14,6 +14,13 @@ export const adminDashboardRoutes: Routes = [
           ),
       },
       {
+        path: 'create-event',
+        loadComponent: () =>
+          import('./pages/event-create/event-create').then(
+            (m) => m.EventCreate
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'events',
       },

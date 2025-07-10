@@ -1,18 +1,25 @@
-import { Component, computed, input, signal } from '@angular/core';
-import { Event } from '../../interfaces/event';
+import { Component, computed, inject, input, signal } from '@angular/core';
+import { Events } from '../../interfaces/event';
 import { DatePipe } from '@angular/common';
+import { EventService } from '../../services/event-service';
+import { Delete } from '../../../common/dialogs/delete/delete';
 
 @Component({
   selector: 'event-table',
-  imports: [DatePipe],
+  imports: [DatePipe, Delete],
   templateUrl: './event-table.html',
   styleUrl: './event-table.css',
 })
 export class EventTable {
-  public events = input<Event[] | null>();
+  public events = input<Events[] | null>();
+  public reload = input<() => void>();
+  private modalOpen = signal<boolean>(false);
+  private eventDelete = signal<string | null>(null);
+  private snackBarVisible = signal<boolean>(false);
 
   private currentPage = signal(1);
   private readonly pageSize = 10;
+  private readonly _eventService = inject(EventService);
 
   public totalPages = computed(() =>
     this.events() ? Math.ceil(this.events()!.length / this.pageSize) : 1
@@ -39,4 +46,36 @@ export class EventTable {
   }
 
   public currentPageSignal = this.currentPage();
+
+  public openDialog(id: string) {
+    this.eventDelete.set(id);
+    this.modalOpen.set(true);
+  }
+
+  public closeDialog() {
+    this.eventDelete.set(null);
+    this.modalOpen.set(false);
+  }
+
+  public deleteEventConfirm() {
+    if (this.eventDelete()) {
+      const id = this.eventDelete()!;
+
+      this._eventService.deleteEvent(id).subscribe(() => {
+        this.closeDialog();
+        this.showSnackBarNow();
+
+        this.reload()?.();
+      });
+    }
+  }
+
+  public isModalOpen = computed(() => this.modalOpen());
+
+  public showSnackBar = computed(() => this.snackBarVisible());
+
+  private showSnackBarNow() {
+    this.snackBarVisible.set(true);
+    setTimeout(() => this.snackBarVisible.set(false), 4000);
+  }
 }

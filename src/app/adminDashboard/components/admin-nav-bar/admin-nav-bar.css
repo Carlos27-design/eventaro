@@ -1,24 +1,29 @@
+/* === SIDEBAR CONTAINER === */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 260px;
-  background-color: #007bff; /* azul que pediste */
+  background-color: #007bff; /* azul principal */
   color: white;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
 }
 
+/* === HEADER DEL SIDEBAR === */
 .sidebar__header {
   padding: 1.5rem;
   font-size: 1.5rem;
   font-weight: bold;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   user-select: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* === NAVEGACIÓN === */
 .sidebar__nav {
   list-style: none;
   padding: 0;
@@ -26,48 +31,99 @@
   flex-grow: 1;
 }
 
-.sidebar__nav li {
+/* === GRUPO Y COLAPSABLE === */
+.sidebar__group {
+  margin-bottom: 1rem;
+}
+
+/* === TÍTULO DE GRUPO Y COLAPSABLE === */
+.sidebar__group-title {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #e6f0ff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar__group-title:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* === FLECHA ▼ para colapsables === */
+.sidebar__group-title::after {
+  content: "▼";
+  font-size: 0.6rem;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.sidebar__group-title.collapsed::after {
+  transform: rotate(-90deg);
+}
+
+/* === HIJOS (children) === */
+.sidebar__children {
+  list-style: none;
+  padding-left: 1rem;
   margin: 0;
 }
 
-.sidebar__nav a {
-  display: flex;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  color: white;
+/* === LINKS HIJOS === */
+.sidebar__children li a {
+  display: block;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #eaf4ff;
   text-decoration: none;
-  font-weight: 600;
   border-left: 4px solid transparent;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.sidebar__nav a:hover {
+.sidebar__children li a:hover,
+.sidebar__children li a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-left: 4px solid #cce5ff;
+  color: #ffffff;
+}
+
+/* === LINKS BÁSICOS === */
+.sidebar__nav > li > a {
+  display: block;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.sidebar__nav > li > a:hover,
+.sidebar__nav > li > a.active {
   background-color: rgba(255, 255, 255, 0.15);
   border-left: 4px solid #cce5ff;
   color: #cce5ff;
 }
 
-.icon {
-  margin-right: 12px;
-  font-size: 1.2rem;
-  /* si usas material icons, aquí puedes poner estilo */
-}
-
-/* Contenido principal */
-.content {
-  margin-left: 260px;
-  padding: 2rem;
-}
-
-/* Responsive: sidebar oculto en pantallas pequeñas */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .sidebar {
     width: 60px;
   }
+
   .sidebar__header h2,
+  .sidebar__group-title,
   .sidebar__nav a span:not(.icon) {
     display: none;
   }
+
   .content {
     margin-left: 60px;
   }

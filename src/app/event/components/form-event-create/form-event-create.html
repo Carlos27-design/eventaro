@@ -1,0 +1,122 @@
+<div class="event-form">
+  <h2 class="event-form__title">Crear Evento</h2>
+  <p class="event-form__description">
+    Rellene el formulario para crear un nuevo evento
+  </p>
+
+  <div class="event-form__card">
+    <form class="event-form__form" [formGroup]="eventForm">
+      <div class="event-form__group">
+        <label for="name" class="event-form__label">Nombre del evento</label>
+        <input
+          type="text"
+          id="name"
+          class="event-form__input"
+          formControlName="name"
+        />
+      </div>
+
+      <div class="event-form__group">
+        <label for="description" class="event-form__label"
+          >Descripción del evento</label
+        >
+        <textarea
+          id="description"
+          class="event-form__input"
+          formControlName="description"
+        ></textarea>
+      </div>
+
+      <div class="event-form__group">
+        <label for="initialDate" class="event-form__label"
+          >Fecha de inicio del evento</label
+        >
+        <input
+          type="date"
+          id="initialDate"
+          class="event-form__input"
+          formControlName="initialDate"
+        />
+      </div>
+
+      <div class="event-form__group">
+        <label for="finalDate" class="event-form__label"
+          >Fecha de finalización del evento</label
+        >
+        <input
+          type="date"
+          id="finalDate"
+          class="event-form__input"
+          formControlName="finalDate"
+        />
+      </div>
+
+      <div class="event-form__group">
+        <label for="ubication" class="event-form__label"
+          >Ubicación del evento</label
+        >
+        <input
+          type="text"
+          id="ubication"
+          class="event-form__input"
+          formControlName="ubication"
+        />
+      </div>
+
+      <div class="event-form__group">
+        <label for="typeEvent" class="event-form__label">Tipo de evento</label>
+        <select
+          id="typeEvent"
+          class="event-form__input"
+          formControlName="typeEventId"
+        >
+          <option value="">Seleccion un tipo de evento</option>
+          @for (typeEvent of typeEventsLoad(); track $index) {
+          <option [value]="typeEvent.id">{{typeEvent.name}}</option>
+          }
+        </select>
+      </div>
+
+      <div class="event-form__group">
+        <label for="organization" class="event-form__label"
+          >Organización del evento</label
+        >
+        <select
+          type="text"
+          id="organization"
+          class="event-form__input"
+          formControlName="organizationId"
+        >
+          <option value="">Seleccione una organización</option>
+          @for (organization of organizationsLoad(); track $index) {
+          <option [value]="organization.id">{{organization.name}}</option>
+          }
+        </select>
+      </div>
+
+      <div class="event-form__group">
+        <label for="images" class="event-form__label">Imagen de evento</label>
+        <input
+          type="file"
+          id="images"
+          multiple
+          accept="image/*"
+          (change)="onFilesChanged($event)"
+          class="event-form__input"
+        />
+      </div>
+
+      @if(showDialog()){
+      <app-create (close)="closeDialog()" (confirm)="onSubmit()" />
+      }
+      <!--  -->
+      @if(showSnackBar()){
+      <div class="snackbar">Evento creado correctamente</div>
+      }
+
+      <button type="submit" class="event-form__button" (click)="openDialog()">
+        Crear Evento
+      </button>
+    </form>
+  </div>
+</div>

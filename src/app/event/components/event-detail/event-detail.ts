@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { Event } from '../../interfaces/event';
-import { DatePipe, SlicePipe } from '@angular/common';
+import { Events } from '../../interfaces/event';
+import { DatePipe } from '@angular/common';
 import { EventImagePipe } from '../../pipes/event-image-pipe';
 
 @Component({
@@ -10,5 +10,5 @@ import { EventImagePipe } from '../../pipes/event-image-pipe';
   styleUrl: './event-detail.css',
 })
 export class EventDetail {
-  public event = input.required<Event>();
+  public event = input.required<Events>();
 }

@@ -1,1 +1,4 @@
-<event-table [events]="eventsResource.value()" />
+<event-table
+  [events]="eventsResource.value()"
+  [reload]="reloadEvents.bind(this)"
+/>

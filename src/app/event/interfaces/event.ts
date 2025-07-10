@@ -2,7 +2,7 @@ import { Organization } from '../../organization/interfaces/organization';
 import { TypeEvent } from '../../typeEvent/interfaces/type-event';
 import { Ubication } from '../../ubication/interfaces/ubication';
 
-export interface Event {
+export interface Events {
   id: string;
   name: string;
   description: string;
@@ -12,4 +12,5 @@ export interface Event {
   ubication: Ubication;
   typeEvent: TypeEvent;
   organization: Organization;
+  statusEvent: string;
 }

@@ -3,22 +3,27 @@ import { NavItem } from './navigation-item.interface';
 export const defaultNavigation: NavItem[] = [
   {
     id: 'dashboard',
-    title: 'Dashboard',
-    type: 'group',
+    title: 'Gestion',
+    type: 'collapsable',
     children: [
       {
-        id: 'inicio',
-        title: 'Inicio',
-        type: 'basic',
-        icon: 'home',
-        link: '/dashboard',
-      },
-      {
-        id: 'socio-moroso',
-        title: 'Socios Morosos',
-        type: 'basic',
-        icon: 'people',
-        link: '/socio-moroso',
+        id: 'events',
+        title: 'Eventos',
+        type: 'collapsable',
+        children: [
+          {
+            id: 'list',
+            title: 'Listado de eventos',
+            type: 'basic',
+            link: '/admin/events',
+          },
+          {
+            id: 'create',
+            title: 'Crear evento',
+            type: 'basic',
+            link: '/admin/create-event',
+          },
+        ],
       },
     ],
   },

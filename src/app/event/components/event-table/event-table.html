@@ -15,10 +15,14 @@
           Tipo de Evento
         </th>
         <th class="event-list__cell event-list__cell--header">Organización</th>
+        <th class="event-list__cell event-list__cell--header">Estado Evento</th>
+        <th class="event-list__cell event-list__cell--header">Acciones</th>
       </tr>
     </thead>
     <tbody class="event-list__body">
-      @if(events()){ @for (event of events(); track $index) {
+      @if(events()) {
+      <!--  -->
+      @for (event of events(); track $index) {
       <tr class="event-list__row">
         <td class="event-list__cell">{{ event.name }}</td>
         <td class="event-list__cell">{{ event.description }}</td>
@@ -31,10 +35,25 @@
         <td class="event-list__cell">{{ event.ubication.name }}</td>
         <td class="event-list__cell">{{ event.typeEvent.name }}</td>
         <td class="event-list__cell">{{ event.organization.name }}</td>
+        <td class="event-list__cell">{{ event.statusEvent }}</td>
+        <td class="event-list__cell event-list__cell--actions">
+          <button>Editar</button>
+          <button (click)="openDialog(event.id)">Eliminar</button>
+        </td>
       </tr>
-      } }
+      }
+      <!--  -->
+      }
     </tbody>
   </table>
+
+  @if(isModalOpen()){
+  <app-delete (close)="closeDialog()" (confirm)="deleteEventConfirm()" />
+  }
+  <!--  -->
+  @if(showSnackBar()){
+  <div class="snackbar">Evento Eliminado correctamente</div>
+  }
 
   <div class="event-list__pagination">
     <button (click)="prevPage()" [disabled]="currentPageSignal === 1">

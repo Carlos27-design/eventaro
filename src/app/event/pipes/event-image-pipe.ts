@@ -12,10 +12,6 @@ export class EventImagePipe implements PipeTransform {
       return './assets/images/no-image.jpg';
     }
 
-    if (typeof value === 'string' && value.startsWith('blob:')) {
-      return value;
-    }
-
     if (typeof value === 'string') {
       return `${baseUrl}/files/product/${value}`;
     }

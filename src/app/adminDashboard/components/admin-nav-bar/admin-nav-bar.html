@@ -2,11 +2,52 @@
   <div class="sidebar__header">
     <h2>Eventaro Admin</h2>
   </div>
+
   <ul class="sidebar__nav">
-    @for (item of flatLinks; track item.id) {
-    <li>
-      <a [routerLink]="item.link">{{item.title}}</a>
-    </li>
+    @for (item of navigation; track item.id) {
+    <ng-container
+      *ngTemplateOutlet="renderItem; context: { $implicit: item }"
+    ></ng-container>
     }
   </ul>
 </div>
+
+<!-- TEMPLATE RECURSIVO -->
+<ng-template #renderItem let-item>
+  @switch (item.type) { @case ('group') {
+  <li class="sidebar__group">
+    <span class="sidebar__group-title">{{ item.title }}</span>
+    <ul class="sidebar__children">
+      @for (child of item.children; track child.id) {
+      <ng-container
+        *ngTemplateOutlet="renderItem; context: { $implicit: child }"
+      ></ng-container>
+      }
+    </ul>
+  </li>
+  } @case ('collapsable') {
+  <li class="sidebar__group">
+    <span
+      class="sidebar__group-title"
+      (click)="toggleCollapse(item)"
+      [class.collapsed]="collapsedItems.has(item.id)"
+    >
+      {{ item.title }}
+    </span>
+
+    @if (!collapsedItems.has(item.id)) {
+    <ul class="sidebar__children">
+      @for (child of item.children; track child.id) {
+      <ng-container
+        *ngTemplateOutlet="renderItem; context: { $implicit: child }"
+      ></ng-container>
+      }
+    </ul>
+    }
+  </li>
+  } @case ('basic') {
+  <li>
+    <a [routerLink]="item.link" routerLinkActive="active">{{ item.title }}</a>
+  </li>
+  } }
+</ng-template>
