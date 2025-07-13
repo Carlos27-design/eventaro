@@ -12,16 +12,20 @@ export class EventImagePipe implements PipeTransform {
       return './assets/images/no-image.jpg';
     }
 
-    if (typeof value === 'string') {
-      return `${baseUrl}/files/product/${value}`;
+    if (typeof value === 'string' && value.startsWith('blob:')) {
+      return value;
     }
 
-    const image = value.at(0);
+    if (typeof value === 'string') {
+      return `${baseUrl}/files/event/${value}`;
+    }
 
-    if (!image) {
+    const images = value[0];
+
+    if (!images) {
       return './assets/images/no-image.jpg';
     }
 
-    return `${baseUrl}/files/product/${image}`;
+    return `${baseUrl}/files/event/${images}`;
   }
 }

@@ -46,17 +46,27 @@ export class EventService {
   public updateEvent(
     id: string,
     eventLike: Partial<Events>,
-    imageFileList?: FileList
+    imageFileList: FileList
   ): Observable<Events> {
-    const currentImages = eventLike.images || [];
+    const currentImages = Array.isArray(eventLike.images)
+      ? eventLike.images
+      : [];
+
+    const imageNames: string[] = [];
+
+    if (imageFileList) {
+      for (let i = 0; i < imageFileList.length; i++) {
+        imageNames.push(imageFileList[i].name);
+      }
+    }
 
     return this.uploadImages(imageFileList).pipe(
       map((imageName) => ({
         ...eventLike,
         images: [...currentImages, ...imageName],
       })),
-      switchMap((updatedEvent) =>
-        this._http.patch<Events>(`${URL}/event/${id}`, updatedEvent)
+      switchMap((event) =>
+        this._http.patch<Events>(`${URL}/event/${id}`, event)
       )
     );
   }

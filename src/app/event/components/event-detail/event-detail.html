@@ -5,7 +5,7 @@
   </div>
 
   <div class="event-detail__image">
-    <img src="{{event().images | eventImage}}" alt="{{event().name}}" />
+    <img [src]="event().images | eventImage" alt="{{event().name}}" />
   </div>
 
   <div class="event-detail__info">

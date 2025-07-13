@@ -3,10 +3,11 @@ import { Events } from '../../interfaces/event';
 import { DatePipe } from '@angular/common';
 import { EventService } from '../../services/event-service';
 import { Delete } from '../../../common/dialogs/delete/delete';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'event-table',
-  imports: [DatePipe, Delete],
+  imports: [DatePipe, Delete, RouterLink],
   templateUrl: './event-table.html',
   styleUrl: './event-table.css',
 })

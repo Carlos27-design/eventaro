@@ -9,15 +9,22 @@ export const adminDashboardRoutes: Routes = [
       {
         path: 'events',
         loadComponent: () =>
-          import('./pages/events-admin/events-admin').then(
+          import('./pages/event-page/events-admin/events-admin').then(
             (m) => m.EventsAdmin
           ),
       },
       {
         path: 'create-event',
         loadComponent: () =>
-          import('./pages/event-create/event-create').then(
+          import('./pages/event-page/event-create/event-create').then(
             (m) => m.EventCreate
+          ),
+      },
+      {
+        path: 'update-event/:id',
+        loadComponent: () =>
+          import('./pages/event-page/update-event/update-event').then(
+            (m) => m.UpdateEvent
           ),
       },
       {
