@@ -10,8 +10,8 @@ import {
 import { Events } from '../../interfaces/event';
 import { EventService } from '../../services/event-service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TypeEventService } from '../../../typeEvent/services/type-event';
-import { OrganizationService } from '../../../organization/services/organization-service';
+import { TypeEventService } from '../../../typeEvent/services/type-event-data';
+import { OrganizationService } from '../../../organization/services/organization-data';
 import { TypeEvent } from '../../../typeEvent/interfaces/type-event';
 import { Organization } from '../../../organization/interfaces/organization';
 import { combineLatest } from 'rxjs';

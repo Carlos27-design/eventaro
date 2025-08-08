@@ -25,6 +25,25 @@ export const defaultNavigation: NavItem[] = [
           },
         ],
       },
+      {
+        id: 'type-events',
+        title: 'Tipos de eventos',
+        type: 'collapsable',
+        children: [
+          {
+            id: 'list',
+            title: 'Listado de tipos de eventos',
+            type: 'basic',
+            link: '/admin/type-events',
+          },
+          {
+            id: 'create',
+            title: 'Crear tipo de evento',
+            type: 'basic',
+            link: '/admin/create-type-event',
+          },
+        ],
+      },
     ],
   },
 ];

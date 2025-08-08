@@ -1,0 +1,6 @@
+<h1 class="type-event-list__title">Listado de Tipos de Eventos</h1>
+
+<app-type-event-table
+  [typeEvents]="typeEventResource.value()"
+  [reload]="reloadTypeEvents.bind(this)"
+></app-type-event-table>

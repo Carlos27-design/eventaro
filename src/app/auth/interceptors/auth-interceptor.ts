@@ -3,7 +3,7 @@ import {
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
-import { Auth } from '../services/auth';
+import { Auth } from '../services/auth-data';
 import { inject } from '@angular/core';
 
 export const authInterceptor: HttpInterceptorFn = (

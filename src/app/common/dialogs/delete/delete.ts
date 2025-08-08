@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-delete',
@@ -7,6 +7,7 @@ import { Component, output } from '@angular/core';
   styleUrl: './delete.css',
 })
 export class Delete {
+  public message = input<string>('');
   public close = output();
   public confirm = output();
 }

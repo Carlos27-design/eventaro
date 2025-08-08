@@ -1,0 +1,73 @@
+<div class="type-event-list">
+  <table class="type-event-list__table">
+    <thead class="type-event-list__head">
+      <tr class="type-event-list__row">
+        <th class="type-event-list__cell type-event-list__cell--header">
+          Nombre
+        </th>
+        <th class="type-event-list__cell type-event-list__cell--header">
+          Creado
+        </th>
+        <th class="type-event-list__cell type-event-list__cell--header">
+          Actualizado
+        </th>
+        <th class="type-event-list__cell type-event-list__cell--header">
+          Acciones
+        </th>
+      </tr>
+    </thead>
+    <tbody class="type-event-list__body">
+      @if(typeEvents()){
+      <!--  -->
+      @for (typeEvent of typeEvents(); track typeEvent.id) {
+      <tr class="type-event-list__row">
+        <td class="type-event-list__cell">{{typeEvent.name}}</td>
+        <td class="type-event-list__cell">
+          {{typeEvent.createdAt| date: "dd/MM/yyyy"}}
+        </td>
+        <td class="type-event-list__cell">
+          {{typeEvent.updatedAt| date: "dd/MM/yyyy"}}
+        </td>
+        <td class="type-event-list__cell type-event-list__cell--actions">
+          <button [routerLink]="['/admin/update-type-event', typeEvent.id]">
+            Editar
+          </button>
+          <button (click)="openDialog(typeEvent.id)">Eliminar</button>
+        </td>
+      </tr>
+      }
+      <!--  -->
+      }
+    </tbody>
+  </table>
+
+  @if(isModalOpen()){
+  <app-delete
+    [message]="message()"
+    (close)="closeDialog()"
+    (confirm)="deleteTypeEventConfirm()"
+  />
+  }
+
+  <!--  -->
+  @if(showSnackbar()){
+  <div class="snackbar">Evento Eliminado correctamente</div>
+  }
+
+  <!--  -->
+
+  <div class="type-event-list__pagination">
+    <button (click)="prevPage()" [disabled]="currentPageSignal === 1">
+      Anterior
+    </button>
+
+    <span>Página {{currentPageSignal}} de {{totalPages()}}</span>
+
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPageSignal === totalPages()"
+    >
+      Siguiente
+    </button>
+  </div>
+</div>

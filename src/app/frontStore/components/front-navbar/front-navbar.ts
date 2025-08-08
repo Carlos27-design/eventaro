@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { TypeEvent } from '../../../typeEvent/interfaces/type-event';
-import { TypeEventService } from '../../../typeEvent/services/type-event';
+import { TypeEventService } from '../../../typeEvent/services/type-event-data';
 import { RouterLink } from '@angular/router';
 
 @Component({

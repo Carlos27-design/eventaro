@@ -48,7 +48,11 @@
   </table>
 
   @if(isModalOpen()){
-  <app-delete (close)="closeDialog()" (confirm)="deleteEventConfirm()" />
+  <app-delete
+    [message]="message()"
+    (close)="closeDialog()"
+    (confirm)="deleteEventConfirm()"
+  />
   }
   <!--  -->
   @if(showSnackBar()){

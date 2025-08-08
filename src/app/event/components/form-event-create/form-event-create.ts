@@ -4,9 +4,9 @@ import { EventService } from '../../services/event-service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Create } from '../../../common/dialogs/create/create';
 import { Events } from '../../interfaces/event';
-import { TypeEventService } from '../../../typeEvent/services/type-event';
+import { TypeEventService } from '../../../typeEvent/services/type-event-data';
 import { TypeEvent } from '../../../typeEvent/interfaces/type-event';
-import { OrganizationService } from '../../../organization/services/organization-service';
+import { OrganizationService } from '../../../organization/services/organization-data';
 import { Organization } from '../../../organization/interfaces/organization';
 import { combineLatest } from 'rxjs';
 
@@ -17,6 +17,7 @@ import { combineLatest } from 'rxjs';
   styleUrl: './form-event-create.css',
 })
 export class FormEventCreate {
+  public message = signal<string>('Evento');
   private dialogOpen = signal(false);
 
   private readonly _typeEventService = inject(TypeEventService);

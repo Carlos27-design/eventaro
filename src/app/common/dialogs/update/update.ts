@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-update',
@@ -7,6 +7,7 @@ import { Component, output } from '@angular/core';
   styleUrl: './update.css',
 })
 export class Update {
+  public message = input<string>('');
   public close = output();
   public confirm = output();
 }

@@ -12,6 +12,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './event-table.css',
 })
 export class EventTable {
+  public message = signal<string>('Evento');
   public events = input<Events[] | null>();
   public reload = input<() => void>();
   private modalOpen = signal<boolean>(false);
