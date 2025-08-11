@@ -1,6 +1,11 @@
 <div class="sidebar">
   <div class="sidebar__header">
-    <h2>Eventaro Admin</h2>
+    <h2 class="sidebar__header--title">Eventaro Admin</h2>
+    @if(authService.authStatus() === 'authenticated') {
+    <p class="sidebar__header--name">
+      Bienvenido, {{authService.user()!.fullName}}
+    </p>
+    }
   </div>
 
   <ul class="sidebar__nav">

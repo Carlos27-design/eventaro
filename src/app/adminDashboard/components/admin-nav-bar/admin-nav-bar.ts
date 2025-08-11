@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavItem } from '../../core/navigation-item.interface';
 import { defaultNavigation } from '../../core/default-navigation';
 import { CommonModule } from '@angular/common';
+import { AuthData } from '../../../auth/services/auth-data';
 
 @Component({
   selector: 'admin-nav-bar',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './admin-nav-bar.css',
 })
 export class AdminNavBar {
+  public readonly authService = inject(AuthData);
   navigation: NavItem[] = defaultNavigation;
   collapsedItems = new Set<string>();
 

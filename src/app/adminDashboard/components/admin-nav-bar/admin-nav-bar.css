@@ -23,6 +23,18 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.sidebar__header--title {
+  margin: 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.sidebar__header--name {
+  margin: 0;
+  text-align: center;
+  font-size: 1rem;
+}
+
 /* === NAVEGACIÓN === */
 .sidebar__nav {
   list-style: none;
