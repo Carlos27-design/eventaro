@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { TypeEvent } from '../../../typeEvent/interfaces/type-event';
 import { TypeEventService } from '../../../typeEvent/services/type-event-data';
 import { RouterLink } from '@angular/router';
+import { AuthData } from '../../../auth/services/auth-data';
 
 @Component({
   selector: 'app-front-navbar',
@@ -11,6 +12,8 @@ import { RouterLink } from '@angular/router';
 })
 export class FrontNavbar {
   private readonly _typeEventService = inject(TypeEventService);
+
+  public readonly authService = inject(AuthData);
 
   public routes = signal<TypeEvent[]>([]);
 

@@ -5,6 +5,7 @@ export const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.routes').then((m) => m.authRoutes),
+    canMatch: [notAuthenticatedGuard],
   },
   {
     path: 'admin',
@@ -13,6 +14,7 @@ export const routes: Routes = [
         (m) => m.adminDashboardRoutes
       ),
   },
+
   {
     path: '',
     loadChildren: () =>

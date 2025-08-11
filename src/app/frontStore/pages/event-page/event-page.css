@@ -27,6 +27,24 @@
   font-size: 1rem;
 }
 
+.event-page__actions {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.event-page__link {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

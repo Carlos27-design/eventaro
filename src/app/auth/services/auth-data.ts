@@ -15,7 +15,7 @@ const URL = environment.baseUrl;
 @Injectable({
   providedIn: 'root',
 })
-export class Auth {
+export class AuthData {
   private _authStatus = signal<string>('ckecking');
   private _user = signal<User | null>(null);
   private _token = signal<string | null>(localStorage.getItem('token'));
@@ -39,14 +39,14 @@ export class Auth {
   public user = computed(() => this._user());
   public token = computed(() => this._token());
   public isAdmin = computed(
-    () => this._user()?.role.includes('ADMIN') ?? false
+    () => this._user()?.roles.includes('ADMIN') ?? false
   );
 
   public isOrganizer = computed(
-    () => this._user()?.role.includes('ORGANIZER') ?? false
+    () => this._user()?.roles.includes('ORGANIZER') ?? false
   );
 
-  public isUser = computed(() => this._user()?.role.includes('USER') ?? false);
+  public isUser = computed(() => this._user()?.roles.includes('USER') ?? false);
 
   public login(email: string, password: string): Observable<boolean> {
     return this._http

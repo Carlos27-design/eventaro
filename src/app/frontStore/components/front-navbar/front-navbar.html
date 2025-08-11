@@ -1,5 +1,30 @@
 <nav class="navbar">
   <h2 class="navbar__title">Eventaro</h2>
+
+  <!--  -->
+  @if(authService.authStatus() === 'authenticated'){
+  <div class="navbar__user--group">
+    <p class="navbar__user--name">
+      Bienvenido, {{authService.user()!.fullName}}
+    </p>
+    <!--  -->
+    @if(authService.isAdmin()){
+    <button class="navbar__admin--btn" [routerLink]="['/admin/events']">
+      Panel de Administración
+    </button>
+    }
+    <!--  -->
+    <button class="navbar__logout--btn" (click)="authService.logout()">
+      Cerrar Sesión
+    </button>
+  </div>
+  }
+  <!--  -->
+  @else if (authService.authStatus() === 'not-authenticated') {
+  <button class="navbar__login--btn" [routerLink]="['/auth/login']">
+    Iniciar Sesión
+  </button>
+  }
 </nav>
 
 <div class="event-scroll">

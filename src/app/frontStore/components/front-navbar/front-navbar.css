@@ -5,13 +5,68 @@
   background-color: #007bff;
   padding: 1rem;
   color: white;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .navbar__title {
   margin: 0;
   font-size: 1.8rem;
   font-weight: 600;
+}
+
+.navbar__user-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar__user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Espacio entre nombre y botones */
+}
+
+.navbar__user--name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.navbar__login--btn,
+.navbar__logout--btn,
+.navbar__admin--btn {
+  background-color: white;
+  color: #007bff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar__admin--btn {
+  background-color: white;
+  color: #007bff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.navbar__login--btn:hover,
+.navbar__logout--btn:hover,
+.navbar__admin--btn:hover {
+  background-color: #0056b3;
+  color: white;
 }
 
 /* Contenedor sticky horizontal */
@@ -56,4 +111,30 @@
 .event-scroll__button:hover {
   background-color: #333;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.75rem;
+  }
+
+  .navbar__title {
+    font-size: 1.5rem;
+  }
+
+  .navbar__user-group {
+    gap: 0.5rem;
+  }
+
+  .navbar__user--name {
+    font-size: 1rem;
+  }
+
+  .navbar__login--btn,
+  .navbar__logout--btn,
+  .navbar__admin--btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
 }
