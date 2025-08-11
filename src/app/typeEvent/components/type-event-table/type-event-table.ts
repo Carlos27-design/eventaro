@@ -12,7 +12,7 @@ import { Delete } from '../../../common/dialogs/delete/delete';
   styleUrl: './type-event-table.css',
 })
 export class TypeEventTable {
-  public message = signal<string>('Tipo de Evento');
+  public message = signal<string>('el Tipo de Evento');
   public typeEvents = input<TypeEvent[] | null>();
   public reload = input<() => void>();
   private modalOpen = signal<boolean>(false);

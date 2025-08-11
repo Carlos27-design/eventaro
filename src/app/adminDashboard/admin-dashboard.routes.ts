@@ -49,6 +49,27 @@ export const adminDashboardRoutes: Routes = [
           ).then((m) => m.TypeEventUpdate),
       },
       {
+        path: 'organizations',
+        loadComponent: () =>
+          import(
+            './pages/organization/organizations-page/organizations-page'
+          ).then((m) => m.OrganizationsPage),
+      },
+      {
+        path: 'create-organization',
+        loadComponent: () =>
+          import(
+            './pages/organization/organization-create-page/organization-create-page'
+          ).then((m) => m.OrganizationCreatePage),
+      },
+      {
+        path: 'update-organization/:id',
+        loadComponent: () =>
+          import(
+            './pages/organization/organization-update-page/organization-update-page'
+          ).then((m) => m.OrganizationUpdatePage),
+      },
+      {
         path: '**',
         redirectTo: 'events',
       },

@@ -44,6 +44,19 @@ export const defaultNavigation: NavItem[] = [
           },
         ],
       },
+      {
+        id: 'organizations',
+        title: 'Organizaciones',
+        type: 'collapsable',
+        children: [
+          {
+            id: 'list',
+            title: 'Listado de organizaciones',
+            type: 'basic',
+            link: '/admin/organizations',
+          },
+        ],
+      },
     ],
   },
 ];

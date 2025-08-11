@@ -4,11 +4,12 @@
   margin: 0;
   margin-bottom: 0.5rem;
   margin-top: 2.5rem;
+  color: #666;
 }
 
 .event-page__subtitle {
   font-size: 1.25rem;
-  color: #555;
+  color: #777;
   margin-top: 0.25rem;
   margin-bottom: 1rem;
 }

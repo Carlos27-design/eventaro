@@ -1,0 +1,6 @@
+<h2 class="organization-page__title">Listado de Organizaciones</h2>
+
+<app-organization-table
+  [organizations]="organizationResource.value()"
+  [reload]="reloadOrganizations.bind(this)"
+/>
