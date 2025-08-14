@@ -55,6 +55,12 @@ export const defaultNavigation: NavItem[] = [
             type: 'basic',
             link: '/admin/organizations',
           },
+          {
+            id: 'create',
+            title: 'Crear organización',
+            type: 'basic',
+            link: '/admin/create-organization',
+          },
         ],
       },
     ],

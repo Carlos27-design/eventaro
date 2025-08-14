@@ -3,6 +3,7 @@ import { EventDetail } from '../../../event/components/event-detail/event-detail
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../../../event/services/event-service';
 import { rxResource } from '@angular/core/rxjs-interop';
+import { AuthData } from '../../../auth/services/auth-data';
 
 @Component({
   selector: 'app-event-page',
@@ -13,7 +14,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 export class EventPage {
   private readonly _route = inject(ActivatedRoute);
   private readonly _eventService = inject(EventService);
-
+  public readonly authService = inject(AuthData);
   public readonly eventId = signal(this._route.snapshot.params['id']);
 
   public eventResource = rxResource({

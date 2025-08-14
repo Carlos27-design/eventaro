@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { OrganizationService } from '../../../../organization/services/organization-data';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Organization } from '../../../../organization/interfaces/organization';
-import { OrganizationTable } from '../../../../organization/component/organization-table/organization-table';
+import { OrganizationTable } from '../../../../organization/components/organization-table/organization-table';
 
 @Component({
   selector: 'app-organizations-page',

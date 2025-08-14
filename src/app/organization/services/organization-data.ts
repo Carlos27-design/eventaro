@@ -20,18 +20,21 @@ export class OrganizationService {
   }
 
   public createOrganization(
-    organization: Organization
+    organizationLike: Partial<Organization>
   ): Observable<Organization> {
-    return this._http.post<Organization>(`${URL}/organization`, organization);
+    return this._http.post<Organization>(
+      `${URL}/organization`,
+      organizationLike
+    );
   }
 
   public updateOrganization(
     id: string,
-    organization: Organization
+    organizationLike: Partial<Organization>
   ): Observable<Organization> {
     return this._http.put<Organization>(
       `${URL}/organization/${id}`,
-      organization
+      organizationLike
     );
   }
 

@@ -6,7 +6,10 @@
 } @if(eventResource.hasValue()){
 <app-event-detail [event]="eventResource.value()" />
 
+@if(authService.authStatus() === 'authenticated'){
 <div class="event-page__actions">
   <button class="event-page__link">Inscribirse</button>
 </div>
+}
+<!--  -->
 }

@@ -7,10 +7,16 @@
     <p class="navbar__user--name">
       Bienvenido, {{authService.user()!.fullName}}
     </p>
-    <!--  -->
+    <!-- ADMIN -->
     @if(authService.isAdmin()){
     <button class="navbar__admin--btn" [routerLink]="['/admin/events']">
       Panel de Administración
+    </button>
+    }
+    <!-- ORGANIZER -->
+    @if(authService.isOrganizer()){
+    <button class="navbar__organizer--btn" [routerLink]="['/organizer/events']">
+      Crear Evento
     </button>
     }
     <!--  -->

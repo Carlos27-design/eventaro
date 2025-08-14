@@ -50,4 +50,19 @@
   @if(showSnackBar()){
   <div class="snackbar">Organización Eliminada correctamente</div>
   }
+
+  <!--  -->
+
+  <div class="organization-list__pagination">
+    <button (click)="prevPage()" [disabled]="currentPageSignal === 1">
+      Anterior
+    </button>
+    <span>Página {{ currentPageSignal }} de {{ totalPages() }}</span>
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPageSignal === totalPages()"
+    >
+      Siguiente
+    </button>
+  </div>
 </div>
