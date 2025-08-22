@@ -14,7 +14,6 @@ import { AuthData } from '../../../auth/services/auth-data';
 export class EventPage {
   private readonly _route = inject(ActivatedRoute);
   private readonly _eventService = inject(EventService);
-  public readonly authService = inject(AuthData);
   public readonly eventId = signal(this._route.snapshot.params['id']);
 
   public eventResource = rxResource({

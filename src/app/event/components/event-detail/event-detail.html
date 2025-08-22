@@ -8,6 +8,14 @@
     <img [src]="event().images | eventImage" alt="{{event().name}}" />
   </div>
 
+  @if(isAuthenticated()){
+  <div class="event-page__actions">
+    <button class="event-page__link" (click)="inscriptionEvent()">
+      Inscribirse
+    </button>
+  </div>
+  }
+
   <div class="event-detail__info">
     <h2 class="event-detail__subtitle">Descripción</h2>
     <p class="event-detail__description">{{event().description}}</p>
@@ -25,4 +33,8 @@
     <h2 class="event-detail__subtitle">Tipo de Evento</h2>
     <p class="event-detail__type">{{event().typeEvent.name}}</p>
   </div>
+
+  @if(showSnackBar()){
+  <div class="snackbar">Te has inscrito correctamente</div>
+  }
 </section>
