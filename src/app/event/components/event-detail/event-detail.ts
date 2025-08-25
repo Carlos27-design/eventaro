@@ -4,6 +4,8 @@ import { DatePipe } from '@angular/common';
 import { EventImagePipe } from '../../pipes/event-image-pipe';
 import { AuthData } from '../../../auth/services/auth-data';
 import { InscriptionService } from '../../../inscription/services/inscription-service';
+import { Inscription } from '../../../inscription/interfaces/inscription.interfaces';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-event-detail',
@@ -17,11 +19,21 @@ export class EventDetail {
   private readonly authService = inject(AuthData);
   public event = input.required<Events>();
 
+  public alreadyInscribed = signal<boolean>(false);
+
   public isAuthenticated = computed(
     () => this.authService.authStatus() === 'authenticated'
   );
 
   public showSnackBar = computed(() => this.snackBarVisible());
+
+  ngOnInit() {
+    this.inscriptionService
+      .findExistInscription(this.event()!.id)
+      .subscribe((exist) => {
+        this.alreadyInscribed.set(exist);
+      });
+  }
 
   public showSnackBarNow() {
     this.snackBarVisible.set(true);
@@ -30,16 +42,11 @@ export class EventDetail {
 
   public inscriptionEvent() {
     const today = new Date();
-    const formattedDate = today.toISOString().slice(0, 10);
-
-    const dateOnly = new Date(formattedDate);
 
     const inscriptionLike = {
-      dateInscription: dateOnly,
+      dateInscription: today,
       eventId: this.event()!.id,
     };
-
-    console.log(inscriptionLike);
 
     this.inscriptionService.createInscription(inscriptionLike).subscribe(() => {
       this.showSnackBarNow();

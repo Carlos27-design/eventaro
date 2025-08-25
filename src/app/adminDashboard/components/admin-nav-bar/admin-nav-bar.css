@@ -1,11 +1,10 @@
-/* === SIDEBAR CONTAINER === */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 260px;
-  background-color: #007bff; /* azul principal */
+  background-color: #007bff;
   color: white;
   display: flex;
   flex-direction: column;
@@ -13,7 +12,6 @@
   z-index: 1000;
 }
 
-/* === HEADER DEL SIDEBAR === */
 .sidebar__header {
   padding: 1.5rem;
   font-size: 1.5rem;
@@ -27,6 +25,7 @@
   margin: 0;
   text-align: center;
   font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .sidebar__header--name {
@@ -43,7 +42,6 @@
   flex-grow: 1;
 }
 
-/* === GRUPO Y COLAPSABLE === */
 .sidebar__group {
   margin-bottom: 1rem;
 }
@@ -58,6 +56,7 @@
   color: #e6f0ff;
   cursor: pointer;
   display: flex;
+  margin-bottom: 0.5re;
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.3s ease;

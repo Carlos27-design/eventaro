@@ -10,9 +10,15 @@
 
   @if(isAuthenticated()){
   <div class="event-page__actions">
+    @if(alreadyInscribed()){
     <button class="event-page__link" (click)="inscriptionEvent()">
       Inscribirse
     </button>
+    }
+    <!--  -->
+    @else {
+    <p class="event-page__message">✅ Ya estás inscrito en este evento</p>
+    }
   </div>
   }
 

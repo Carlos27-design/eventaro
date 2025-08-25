@@ -53,5 +53,8 @@
         ¿Ya tienes una cuenta? <a routerLink="/auth/login">Iniciar Sesión</a>
       </p>
     </form>
+    @if(showSnackBar()){
+    <div class="snackbar">Bienvenido a Eventaro</div>
+    }
   </div>
 </div>

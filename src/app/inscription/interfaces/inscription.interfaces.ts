@@ -10,3 +10,8 @@ export interface Inscription {
   event: Events;
   user: User;
 }
+
+export type InscriptionUI = Partial<Inscription> & {
+  event: Events;
+  user: User | null;
+};

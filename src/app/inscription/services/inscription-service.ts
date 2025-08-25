@@ -12,12 +12,16 @@ const URL = environment.baseUrl;
 export class InscriptionService {
   private readonly _http = inject(HttpClient);
 
-  public getInscription(): Observable<Inscription[]> {
+  public getInscriptions(): Observable<Inscription[]> {
     return this._http.get<Inscription[]>(`${URL}/inscription`);
   }
 
   public getInscriptionById(id: string): Observable<Inscription> {
     return this._http.get<Inscription>(`${URL}/inscription/${id}`);
+  }
+
+  public findExistInscription(eventId: string): Observable<boolean> {
+    return this._http.get<boolean>(`${URL}/inscription/exist/${eventId}`);
   }
 
   public createInscription(
