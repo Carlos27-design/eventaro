@@ -1,0 +1,114 @@
+.user-form-create {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.user-form-create__card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.user-form-create__form {
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  gap: 1.5rem;
+}
+
+.user-form-create__group {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 1;
+}
+
+.user-form-create__group.full-width {
+  grid-column: span 2;
+}
+
+.user-form-create__label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.user-form-create__input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  resize: vertical;
+  min-height: 42px;
+}
+
+.user-form-create__input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+.user-form-create__button {
+  grid-column: span 2;
+  justify-self: end;
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-form-create__button:hover {
+  background-color: #0056b3;
+}
+
+.snackbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 0.95rem;
+  animation: fadeInOut 5s ease forwards;
+  z-index: 2000;
+}
+
+@media (max-width: 768px) {
+  .user-form-create__form {
+    grid-template-columns: 1fr;
+  }
+
+  .user-form-create__button {
+    grid-column: span 1;
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+}

@@ -10,7 +10,7 @@
 
   @if(isAuthenticated()){
   <div class="event-page__actions">
-    @if(alreadyInscribed()){
+    @if(!alreadyInscribed()){
     <button class="event-page__link" (click)="inscriptionEvent()">
       Inscribirse
     </button>

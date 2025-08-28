@@ -70,6 +70,25 @@ export const adminDashboardRoutes: Routes = [
           ).then((m) => m.OrganizationUpdatePage),
       },
       {
+        path: 'users',
+        loadComponent: () =>
+          import('./pages/user/user-admin/user-admin').then((m) => m.UserAdmin),
+      },
+      {
+        path: 'create-user',
+        loadComponent: () =>
+          import('./pages/user/create-user/create-user').then(
+            (m) => m.CreateUser
+          ),
+      },
+      {
+        path: 'update-user/:id',
+        loadComponent: () =>
+          import('./pages/user/update-user/update-user').then(
+            (m) => m.UpdateUser
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'events',
       },

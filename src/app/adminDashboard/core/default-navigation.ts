@@ -63,6 +63,25 @@ export const defaultNavigation: NavItem[] = [
           },
         ],
       },
+      {
+        id: 'users',
+        title: 'Usuarios',
+        type: 'collapsable',
+        children: [
+          {
+            id: 'list',
+            title: 'Listado de usuarios',
+            type: 'basic',
+            link: '/admin/users',
+          },
+          {
+            id: 'create',
+            title: 'Crear Usuario',
+            type: 'basic',
+            link: '/admin/create-user',
+          },
+        ],
+      },
     ],
   },
 ];

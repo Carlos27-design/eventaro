@@ -1,0 +1,41 @@
+<div class="user-list">
+  <table class="user-list__table">
+    <thead class="user-list__head">
+      <tr class="user-list__row">
+        <th class="user-list__cell user-list__cell--header">Nombre</th>
+        <th class="user-list__cell user-list__cell--header">Correo</th>
+        <th class="user-list__cell user-list__cell--header">Rol</th>
+        <th class="user-list__cell user-list__cell--header">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="user-list__body">
+      @for(user of users(); track user.id){
+      <tr class="user-list__row">
+        <td class="user-list__cell">{{user.fullName}}</td>
+        <td class="user-list__cell">{{user.email}}</td>
+        <td class="user-list__cell">{{user.roles}}</td>
+        <td class="user-list__cell user-list__cell--actions">
+          <button [routerLink]="['/admin/update-user/',  user.id]">
+            Editar
+          </button>
+          <button (click)="openDialog(user.id)">Eliminar</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  @if(isModalOpen()){
+  <app-delete
+    [message]="message()"
+    (close)="closeDialog()"
+    (confirm)="deleteConfirmUserConfirm()"
+  />
+  }
+
+  <!--  -->
+
+  @if(showSnackBar()){
+  <div class="snackbar">Usuario Eliminado con exito</div>
+  }
+</div>
