@@ -26,7 +26,7 @@
 .navbar__user {
   display: flex;
   align-items: center;
-  gap: 0.75rem; /* Espacio entre nombre y botones */
+  gap: 0.75rem;
 }
 
 .navbar__user--name {
@@ -70,10 +70,9 @@
   color: white;
 }
 
-/* Contenedor sticky horizontal */
 .event-scroll {
   position: sticky;
-  top: 56px; /* Ajusta si el navbar es más alto */
+  top: 56px;
   z-index: 999;
   background-color: white;
   display: flex;
@@ -85,7 +84,6 @@
   border-bottom: 1px solid #ddd;
 }
 
-/* Scrollbar bonita */
 .event-scroll::-webkit-scrollbar {
   height: 6px;
 }
@@ -97,7 +95,6 @@
   background-color: #f0f0f0;
 }
 
-/* Botones */
 .event-scroll__button {
   flex: 0 0 auto;
   padding: 0.5rem 1rem;

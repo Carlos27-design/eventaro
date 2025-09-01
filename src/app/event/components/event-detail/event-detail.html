@@ -11,7 +11,11 @@
   @if(isAuthenticated()){
   <div class="event-page__actions">
     @if(!alreadyInscribed()){
-    <button class="event-page__link" (click)="inscriptionEvent()">
+    <button
+      class="event-page__link"
+      (click)="inscriptionEvent()"
+      [disabled]="alreadyInscribed()"
+    >
       Inscribirse
     </button>
     }

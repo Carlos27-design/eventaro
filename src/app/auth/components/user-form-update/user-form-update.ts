@@ -89,7 +89,6 @@ export class UserFormUpdate {
     this.userForm.patchValue({
       fullName: user.fullName,
       email: user.email,
-      password: user.password,
       role: user.roles,
     });
   }

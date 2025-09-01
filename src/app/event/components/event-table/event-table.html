@@ -60,15 +60,15 @@
   }
 
   <div class="event-list__pagination">
-    <button (click)="prevPage()" [disabled]="currentPageSignal === 1">
+    <button (click)="prevPage()" [disabled]="currentPageSignal() === 1">
       Anterior
     </button>
 
-    <span>Página {{currentPageSignal}} de {{totalPages()}}</span>
+    <span>Página {{currentPageSignal()}} de {{totalPages()}}</span>
 
     <button
       (click)="nextPage()"
-      [disabled]="currentPageSignal === totalPages()"
+      [disabled]="currentPageSignal() === totalPages()"
     >
       Siguiente
     </button>

@@ -5,7 +5,7 @@
   @if(authService.authStatus() === 'authenticated'){
   <div class="navbar__user--group">
     <p class="navbar__user--name">
-      Bienvenido, {{authService.user()!.fullName}}
+      Bienvenido, {{authService.user()?.fullName}}
     </p>
     <!-- ADMIN -->
     @if(authService.isAdmin()){

@@ -1,4 +1,11 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  output,
+  signal,
+} from '@angular/core';
 import { Events } from '../../interfaces/event';
 import { DatePipe } from '@angular/common';
 import { EventService } from '../../services/event-service';
@@ -14,12 +21,12 @@ import { RouterLink } from '@angular/router';
 export class EventTable {
   public message = signal<string>('el Evento');
   public events = input<Events[] | null>();
-  public reload = input<() => void>();
+  public reload = output<void>();
   private modalOpen = signal<boolean>(false);
   private eventDelete = signal<string | null>(null);
   private snackBarVisible = signal<boolean>(false);
 
-  private currentPage = signal(1);
+  private currentPage = signal<number>(1);
   private readonly pageSize = 10;
   private readonly _eventService = inject(EventService);
 
@@ -47,7 +54,7 @@ export class EventTable {
     this.goToPage(this.currentPage() + 1);
   }
 
-  public currentPageSignal = this.currentPage();
+  public currentPageSignal = computed(() => this.currentPage());
 
   public openDialog(id: string) {
     this.eventDelete.set(id);
@@ -67,7 +74,7 @@ export class EventTable {
         this.closeDialog();
         this.showSnackBarNow();
 
-        this.reload()?.();
+        this.reload.emit();
       });
     }
   }
