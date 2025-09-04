@@ -16,6 +16,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class EventDetail {
   private readonly inscriptionService = inject(InscriptionService);
   private readonly snackBarVisible = signal(false);
+  public snackBarMessage = signal<string>('');
   private readonly authService = inject(AuthData);
   public event = input.required<Events>();
 
@@ -35,7 +36,8 @@ export class EventDetail {
       });
   }
 
-  public showSnackBarNow() {
+  public showSnackBarNow(message: string) {
+    this.snackBarMessage.set(message);
     this.snackBarVisible.set(true);
     setTimeout(() => this.snackBarVisible.set(false), 4000);
   }
@@ -48,8 +50,11 @@ export class EventDetail {
       eventId: this.event()!.id,
     };
 
-    this.inscriptionService.createInscription(inscriptionLike).subscribe(() => {
-      this.showSnackBarNow();
-    });
+    this.inscriptionService.createInscription(inscriptionLike).subscribe(
+      () => {
+        this.showSnackBarNow('✅ Te has inscrito correctamente');
+      },
+      (error) => this.showSnackBarNow(error.error.message)
+    );
   }
 }

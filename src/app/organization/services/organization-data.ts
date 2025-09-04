@@ -32,7 +32,7 @@ export class OrganizationService {
     id: string,
     organizationLike: Partial<Organization>
   ): Observable<Organization> {
-    return this._http.put<Organization>(
+    return this._http.patch<Organization>(
       `${URL}/organization/${id}`,
       organizationLike
     );
