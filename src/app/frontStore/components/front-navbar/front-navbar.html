@@ -19,8 +19,12 @@
       Crear Evento
     </button>
     }
+
+    <button class="navbar__user--btn" [routerLink]="['/inscriptions']">
+      Ver inscripciones
+    </button>
     <!--  -->
-    <button class="navbar__logout--btn" (click)="authService.logout()">
+    <button class="navbar__logout--btn" (click)="logout()">
       Cerrar Sesión
     </button>
   </div>

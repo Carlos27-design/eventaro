@@ -20,7 +20,7 @@ export class EventImagePipe implements PipeTransform {
       return `${baseUrl}/files/event/${value}`;
     }
 
-    const images = value[0];
+    const images = value.at(0);
 
     if (!images) {
       return './assets/images/no-image.jpg';

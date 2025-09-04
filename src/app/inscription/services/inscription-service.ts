@@ -20,6 +20,12 @@ export class InscriptionService {
     return this._http.get<Inscription>(`${URL}/inscription/${id}`);
   }
 
+  public getInscriptionsPerUser(): Observable<Inscription[]> {
+    return this._http.get<Inscription[]>(
+      `${URL}/inscription/inscriptions/user`
+    );
+  }
+
   public findExistInscription(eventId: string): Observable<boolean> {
     return this._http.get<boolean>(`${URL}/inscription/exist/${eventId}`);
   }

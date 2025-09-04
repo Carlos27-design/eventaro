@@ -39,11 +39,14 @@
 
 .navbar__login--btn,
 .navbar__logout--btn,
-.navbar__admin--btn {
+.navbar__admin--btn,
+.navbar__organizer--btn,
+.navbar__user--btn {
   background-color: white;
   color: #007bff;
   border: none;
   padding: 0.5rem 1rem;
+  margin: 0 0.1rem;
   border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
@@ -51,21 +54,11 @@
   white-space: nowrap;
 }
 
-.navbar__admin--btn {
-  background-color: white;
-  color: #007bff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-  margin-right: 0.5rem;
-}
-
 .navbar__login--btn:hover,
 .navbar__logout--btn:hover,
-.navbar__admin--btn:hover {
+.navbar__admin--btn:hover,
+.navbar__organizer--btn:hover,
+.navbar__user--btn:hover {
   background-color: #0056b3;
   color: white;
 }
@@ -131,7 +124,9 @@
 
   .navbar__login--btn,
   .navbar__logout--btn,
-  .navbar__admin--btn {
+  .navbar__admin--btn,
+  .navbar__organizer--btn,
+  .navbar__user--btn {
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
   }

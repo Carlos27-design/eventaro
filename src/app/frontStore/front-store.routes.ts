@@ -25,6 +25,13 @@ export const frontStoreRoutes: Routes = [
             (m) => m.EventByTypeEvent
           ),
       },
+      {
+        path: 'inscriptions',
+        loadComponent: () =>
+          import('./pages/view-inscription-page/view-inscription-page').then(
+            (m) => m.ViewInscriptionPage
+          ),
+      },
     ],
   },
   {

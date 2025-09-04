@@ -1,0 +1,28 @@
+<div class="list-inscription">
+  <div class="list-inscription__image">
+    <img
+      [src]="inscription()!.event!.images  | eventImage"
+      [alt]="inscription()?.event?.name"
+    />
+  </div>
+  <div class="list-inscription__header">
+    <h3 class="list-inscription__title">{{inscription()?.event?.name}}</h3>
+
+    <span class="list-inscription__status">
+      {{inscription()?.statusInscription}}
+    </span>
+  </div>
+
+  <div class="list-inscription__content">
+    <p>
+      <strong>Fecha:</strong> {{inscription()?.dateInscription | date:
+      "dd/MM/yyyy"}}
+    </p>
+    <p><strong>Ubicación:</strong> {{inscription()?.event?.ubication?.name}}</p>
+    <p>
+      <strong>Organización:</strong>
+      {{inscription()?.event?.organization?.name}}
+    </p>
+    <p><strong>Descripción:</strong> {{inscription()?.event?.description}}</p>
+  </div>
+</div>

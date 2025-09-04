@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { TypeEvent } from '../../../typeEvent/interfaces/type-event';
 import { TypeEventService } from '../../../typeEvent/services/type-event-data';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthData } from '../../../auth/services/auth-data';
 
 @Component({
@@ -15,6 +15,8 @@ export class FrontNavbar {
 
   public readonly authService = inject(AuthData);
 
+  private readonly _router = inject(Router);
+
   public routes = signal<TypeEvent[]>([]);
 
   ngOnInit() {
@@ -26,5 +28,10 @@ export class FrontNavbar {
       next: (resp) => this.routes.set(resp),
       error: (error) => console.error(error),
     });
+  }
+
+  public logout() {
+    this.authService.logout();
+    this._router.navigate(['/']);
   }
 }
