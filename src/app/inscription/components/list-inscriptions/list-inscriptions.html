@@ -6,7 +6,11 @@
     />
   </div>
   <div class="list-inscription__header">
-    <h3 class="list-inscription__title">{{inscription()?.event?.name}}</h3>
+    <a
+      class="list-inscription__title"
+      [routerLink]="['/view-inscription', inscription()?.id]"
+      >{{inscription()?.event?.name}}</a
+    >
 
     <span class="list-inscription__status">
       {{inscription()?.statusInscription}}

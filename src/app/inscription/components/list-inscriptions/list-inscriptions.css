@@ -10,6 +10,12 @@
   margin-bottom: 1rem;
 }
 
+.list-inscription:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+  translate: 0 -2px;
+}
+
 .list-inscription__image img {
   width: 100%;
   height: 250px;
@@ -24,9 +30,31 @@
 }
 
 .list-inscription__title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 0;
+  position: relative;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.list-inscription__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #007bff;
+  transform: translateX(10px);
+  transition: width 0.3s ease-in-out;
+}
+
+.list-inscription__title:hover::after {
+  width: 100%;
 }
 
 .list-inscription__status {

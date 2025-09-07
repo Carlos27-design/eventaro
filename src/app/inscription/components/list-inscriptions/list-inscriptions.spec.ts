@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListInscription } from './list-inscription';
+import { ListInscription } from './list-inscriptions';
 
 describe('ListInscription', () => {
   let component: ListInscription;
@@ -8,9 +8,8 @@ describe('ListInscription', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListInscription]
-    })
-    .compileComponents();
+      imports: [ListInscription],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ListInscription);
     component = fixture.componentInstance;

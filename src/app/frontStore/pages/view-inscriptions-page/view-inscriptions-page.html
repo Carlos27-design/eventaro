@@ -1,0 +1,29 @@
+<h2 class="view-inscription-page__title">
+  Bienvenido a tu lista de inscripciones {{user()?.fullName}}
+</h2>
+
+<div class="view-inscription-page__grid">
+  @if(inscriptionResource.isLoading()){
+  <div class="view-inscription-page__loading">
+    <div class="view-inscription-page__loading-spinner"></div>
+    <p class="view-inscription-page__loading-description">
+      Cargando las inscripciones...
+    </p>
+  </div>
+  }
+  <!--  -->
+  @if(inscriptionResource.hasValue()){
+  <!--  -->
+  @for(inscription of inscriptionResource.value(); track $index){
+  <app-list-inscription [inscription]="inscription" />
+  }
+  <!--  -->
+  @empty {
+  <div class="view-inscription-page__empty">
+    <p class="view-inscription-page__description">No tienes inscripciones</p>
+  </div>
+  }
+  <!--  -->
+  }
+  <!--  -->
+</div>

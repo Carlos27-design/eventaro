@@ -28,6 +28,13 @@ export const frontStoreRoutes: Routes = [
       {
         path: 'inscriptions',
         loadComponent: () =>
+          import('./pages/view-inscriptions-page/view-inscriptions-page').then(
+            (m) => m.ViewInscriptionPage
+          ),
+      },
+      {
+        path: 'view-inscription/:id',
+        loadComponent: () =>
           import('./pages/view-inscription-page/view-inscription-page').then(
             (m) => m.ViewInscriptionPage
           ),

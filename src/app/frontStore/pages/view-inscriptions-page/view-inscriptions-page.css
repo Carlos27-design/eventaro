@@ -1,0 +1,43 @@
+.view-inscription-page__title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 2rem;
+  margin-top: 2.5rem;
+}
+
+.view-inscription-page__grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.view-inscription-page__loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.view-inscription-page__loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ccc;
+  border-top-color: #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.view-inscription-page__loading-description {
+  color: #555;
+  font-size: 1rem;
+}
