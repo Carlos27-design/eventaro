@@ -1,1 +1,16 @@
-<p>view-inscription-page works!</p>
+<h2 class="view-inscription-page__title">Bienvenido a tu inscripción</h2>
+
+@if(inscriptionResource.isLoading()){
+<div class="view-inscription-page__loading">
+  <div class="view-inscription-page__loading-spinner"></div>
+  <p class="view-inscription-page__loading-description">
+    Cargando la inscripción...
+  </p>
+</div>
+}
+<!--  -->
+@if(inscriptionResource.hasValue()){
+<!--  -->
+<app-generate-qr-inscription [inscription]="inscriptionResource.value()" />
+<!--  -->
+}

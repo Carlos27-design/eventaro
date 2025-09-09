@@ -29,4 +29,9 @@
     </p>
     <p><strong>Descripción:</strong> {{inscription()?.event?.description}}</p>
   </div>
+  <div class="list-inscription__actions">
+    <a [routerLink]="['/view-inscription', inscription()?.id]"
+      >Ver inscripción</a
+    >
+  </div>
 </div>

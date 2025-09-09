@@ -73,3 +73,38 @@
   margin: 0.4rem 0;
   font-size: 0.95rem;
 }
+
+.list-inscription__actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0.5rem;
+}
+
+.list-inscription__actions a {
+  position: relative;
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.list-inscription__actions a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #007bff;
+  transform: translate(10px);
+  transition: width 0.3s ease-in-out;
+}
+
+.list-inscription__actions a:hover::after {
+  width: 100%;
+}
