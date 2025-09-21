@@ -122,7 +122,7 @@ export class AuthData {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      this._authStatus.set('not-authenticated'); // marcar como no autenticado
+      this._authStatus.set('not-authenticated');
       return of(false);
     }
 
