@@ -39,6 +39,13 @@ export const frontStoreRoutes: Routes = [
             (m) => m.ViewInscriptionPage
           ),
       },
+      {
+        path: 'create-event',
+        loadComponent: () =>
+          import('./pages/create-event-page/create-event-page').then(
+            (m) => m.CreateEventPage
+          ),
+      },
     ],
   },
   {

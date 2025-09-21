@@ -1,0 +1,14 @@
+.create-event-page__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #434242;
+}
+
+.create-event-page__description {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
