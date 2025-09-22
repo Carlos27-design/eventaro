@@ -41,6 +41,7 @@ export class FormEventCreateOrganizer {
     description: ['', [Validators.required, Validators.minLength(3)]],
     initialDate: ['', [Validators.required]],
     finalDate: ['', [Validators.required]],
+    capacity: [''],
     ubication: ['', [Validators.required, Validators.minLength(3)]],
     typeEventId: ['', [Validators.required]],
     organizationId: ['', [Validators.required]],
@@ -86,6 +87,17 @@ export class FormEventCreateOrganizer {
     if (!isValid) return;
 
     const formValue = this.eventForm.value;
+
+    const initialDate = new Date(formValue.initialDate ?? '');
+    const finalDate = new Date(formValue.finalDate ?? '');
+
+    if (formValue.capacity === '' || formValue.capacity === undefined) {
+      formValue.capacity = null;
+    }
+
+    if (initialDate > finalDate) {
+      return;
+    }
 
     const eventLike: Partial<Events> = formValue as any;
 

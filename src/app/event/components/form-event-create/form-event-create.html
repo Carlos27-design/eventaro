@@ -47,6 +47,17 @@
       </div>
 
       <div class="event-form__group">
+        <label for="capacity" class="event-form__label">Capacidad</label>
+        <input
+          type="number"
+          id="capacity"
+          class="event-form__input"
+          formControlName="capacity"
+          [value]="eventForm.get('capacity')?.value ?? ''"
+        />
+      </div>
+
+      <div class="event-form__group">
         <label for="ubication" class="event-form__label"
           >Ubicación del evento</label
         >

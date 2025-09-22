@@ -41,6 +41,7 @@ export class FormEventCreate {
     description: ['', [Validators.required, Validators.minLength(3)]],
     initialDate: ['', [Validators.required]],
     finalDate: ['', [Validators.required]],
+    capacity: [''],
     ubication: ['', [Validators.required, Validators.minLength(3)]],
     typeEventId: ['', [Validators.required]],
     organizationId: ['', [Validators.required]],
@@ -87,7 +88,18 @@ export class FormEventCreate {
 
     const formValue = this.eventForm.value;
 
+    if (formValue.capacity === '' || formValue.capacity === undefined) {
+      formValue.capacity = null;
+    }
+
+    const initialDate = new Date(formValue.initialDate ?? '');
+    const finalDate = new Date(formValue.finalDate ?? '');
+
     const eventLike: Partial<Events> = formValue as any;
+
+    if (initialDate > finalDate) {
+      return;
+    }
 
     this._eventService
       .createEvent(eventLike, this.imageFileList!)

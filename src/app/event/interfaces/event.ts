@@ -8,6 +8,7 @@ export interface Events {
   description: string;
   initialDate: Date;
   finalDate: Date;
+  capacity?: number;
   images: string[];
   ubication: Ubication;
   typeEvent: TypeEvent;
