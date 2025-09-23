@@ -18,6 +18,34 @@ export const frontStoreRoutes: Routes = [
         loadComponent: () =>
           import('./pages/event-page/event-page').then((m) => m.EventPage),
       },
+      {
+        path: 'events/:name',
+        loadComponent: () =>
+          import('./pages/event-by-type-event/event-by-type-event').then(
+            (m) => m.EventByTypeEvent
+          ),
+      },
+      {
+        path: 'inscriptions',
+        loadComponent: () =>
+          import('./pages/view-inscriptions-page/view-inscriptions-page').then(
+            (m) => m.ViewInscriptionPage
+          ),
+      },
+      {
+        path: 'view-inscription/:id',
+        loadComponent: () =>
+          import('./pages/view-inscription-page/view-inscription-page').then(
+            (m) => m.ViewInscriptionPage
+          ),
+      },
+      {
+        path: 'create-event',
+        loadComponent: () =>
+          import('./pages/create-event-page/create-event-page').then(
+            (m) => m.CreateEventPage
+          ),
+      },
     ],
   },
   {

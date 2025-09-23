@@ -20,15 +20,20 @@ export class TypeEventService {
     return this._http.get<TypeEvent>(`${URL}/type-event/${id}`);
   }
 
-  public createTypeEvent(typeEvent: TypeEvent): Observable<TypeEvent> {
-    return this._http.post<TypeEvent>(`${URL}/type-event`, typeEvent);
+  public createTypeEvent(
+    typeEventLike: Partial<TypeEvent>
+  ): Observable<TypeEvent> {
+    return this._http.post<TypeEvent>(`${URL}/type-event`, typeEventLike);
   }
 
   public updateTypeEvent(
     id: string,
-    typeEvent: TypeEvent
+    typeEventLike: Partial<TypeEvent>
   ): Observable<TypeEvent> {
-    return this._http.patch<TypeEvent>(`${URL}/type-event/${id}`, typeEvent);
+    return this._http.patch<TypeEvent>(
+      `${URL}/type-event/${id}`,
+      typeEventLike
+    );
   }
 
   public deleteTypeEvent(id: string): Observable<TypeEvent> {

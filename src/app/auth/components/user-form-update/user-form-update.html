@@ -1,0 +1,55 @@
+<div class="user-form-update">
+  <div class="user-form-update__card">
+    <form [formGroup]="userForm" class="user-form-update__form">
+      <div class="user-form-update__group">
+        <label for="name" class="user-form-update__label">Nombre</label>
+        <input
+          type="text"
+          id="name"
+          class="user-form-update__input"
+          formControlName="fullName"
+        />
+      </div>
+      <div class="user-form-update__group">
+        <label for="email" class="user-form-update__label">Correo</label>
+        <input
+          type="email"
+          id="email"
+          class="user-form-update__input"
+          formControlName="email"
+        />
+      </div>
+      <div class="user-form-update__group">
+        <label for="password" class="user-form-update__label">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          class="user-form-update__input"
+          formControlName="password"
+        />
+      </div>
+
+      <div class="user-form-update__group">
+        <label for="role" class="user-form-update__label">Rol</label>
+        <select class="user-form-update__input" formControlName="role">
+          <option value="ADMIN">Administrador</option>
+          <option value="USER">Usuario</option>
+          <option value="ORGANIZER">Organizador</option>
+        </select>
+      </div>
+      <button
+        type="submit"
+        class="user-form-update__button"
+        (click)="openDialog()"
+      >
+        Actualizar
+      </button>
+
+      @if(showDialog()){
+      <app-update (close)="closeDialog()" (confirm)="onSubmit()" />
+      } @if(showSnackBar()){
+      <div class="snackbar">Usuario Actualizado Correctamente</div>
+      }
+    </form>
+  </div>
+</div>

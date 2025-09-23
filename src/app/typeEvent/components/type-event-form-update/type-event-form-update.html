@@ -1,0 +1,35 @@
+<div class="type-event-form">
+  <div class="type-event-form__card">
+    <form class="type-event-form__form" [formGroup]="typeEventForm">
+      <div class="type-event-form__group">
+        <label for="name" class="type-event-form__label"
+          >Nombre del tipo de evento</label
+        >
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="type-event-form__input"
+        />
+      </div>
+
+      <button (click)="openDialog()" class="type-event-form__button">
+        Crear Tipo de evento
+      </button>
+    </form>
+  </div>
+
+  @if(showDialog()){
+  <app-update
+    [message]="message()"
+    (close)="closeDialog()"
+    (confirm)="onSubmit()"
+  />
+  }
+
+  <!--  -->
+
+  @if(showSnackBar()){
+  <div class="snackbar">Tipo de Evento creado correctamente</div>
+  }
+</div>

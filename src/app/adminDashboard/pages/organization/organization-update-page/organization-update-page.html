@@ -1,0 +1,18 @@
+<h2 class="organization-form-update__title">Actualizar Organización</h2>
+<p class="organization-form-update__description">
+  Rellene el formulario para actualizar la organización
+</p>
+
+@if(organizationResource.isLoading()){
+<div class="event-page__loading">
+  <div class="event-page__loading-spinner"></div>
+  <p class="event-page__loading-text">Cargando Organización ...</p>
+</div>
+}
+
+<!--  -->
+@if(organizationResource.hasValue()){
+<app-update-organization-form
+  [organization]="organizationResource.value()! || {}"
+/>
+}

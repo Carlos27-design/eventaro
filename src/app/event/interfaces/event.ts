@@ -1,11 +1,17 @@
-export interface Event {
+import { Organization } from '../../organization/interfaces/organization';
+import { TypeEvent } from '../../typeEvent/interfaces/type-event';
+import { Ubication } from '../../ubication/interfaces/ubication';
+
+export interface Events {
   id: string;
   name: string;
   description: string;
   initialDate: Date;
   finalDate: Date;
+  capacity?: number;
   images: string[];
-  ubication: string;
-  typeEventId: string;
-  organizationId: string;
+  ubication: Ubication;
+  typeEvent: TypeEvent;
+  organization: Organization;
+  statusEvent: string;
 }

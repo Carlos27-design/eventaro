@@ -1,0 +1,48 @@
+<div class="organization-form">
+  <div class="organization-form__card">
+    <form class="organization-form__form" [formGroup]="organizationForm">
+      <div class="organization-form__group">
+        <label for="name" class="organization-form__label">Nombre</label>
+        <input
+          type="text"
+          id="name"
+          class="organization-form__input"
+          formControlName="name"
+        />
+      </div>
+      <div class="organization-form__group">
+        <label for="description" class="organization-form__label"
+          >Descripción</label
+        >
+        <textarea
+          id="description"
+          class="organization-form__input"
+          formControlName="description"
+        ></textarea>
+      </div>
+      <div class="organization-form__group">
+        <label for="email" class="organization-form__label">Email</label>
+        <input
+          type="text"
+          id="email"
+          class="organization-form__input"
+          formControlName="email"
+        />
+      </div>
+
+      <button class="organization-form__button" (click)="openDialog()">
+        Actualizar Organización
+      </button>
+
+      @if(showDialog()){
+      <app-update
+        [message]="message()"
+        (close)="closeDialog()"
+        (confirm)="onSubmit()"
+      />
+      } @if(showSnackBar()){
+      <div class="snackbar">Organización Actualizada Correctamente</div>
+      }
+    </form>
+  </div>
+</div>

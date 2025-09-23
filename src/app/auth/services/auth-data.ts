@@ -15,10 +15,10 @@ const URL = environment.baseUrl;
 @Injectable({
   providedIn: 'root',
 })
-export class Auth {
+export class AuthData {
   private _authStatus = signal<string>('ckecking');
   private _user = signal<User | null>(null);
-  private _token = signal<string | null>(localStorage.getItem('token'));
+  private _token = signal<string | null>(localStorage.getItem('token')!);
 
   private _http = inject(HttpClient);
 
@@ -39,14 +39,14 @@ export class Auth {
   public user = computed(() => this._user());
   public token = computed(() => this._token());
   public isAdmin = computed(
-    () => this._user()?.role.includes('ADMIN') ?? false
+    () => this._user()?.roles.includes('ADMIN') ?? false
   );
 
   public isOrganizer = computed(
-    () => this._user()?.role.includes('ORGANIZER') ?? false
+    () => this._user()?.roles.includes('ORGANIZER') ?? false
   );
 
-  public isUser = computed(() => this._user()?.role.includes('USER') ?? false);
+  public isUser = computed(() => this._user()?.roles.includes('USER') ?? false);
 
   public login(email: string, password: string): Observable<boolean> {
     return this._http
@@ -58,6 +58,47 @@ export class Auth {
         map((resp) => this.handleAuthSuccess(resp)),
         catchError((error) => this.handleAuthError(error))
       );
+  }
+
+  public createUserAdmin(
+    fullName: string,
+    email: string,
+    password: string,
+    role: string
+  ) {
+    return this._http.post(`${URL}/auth/register-admin`, {
+      fullName: fullName,
+      email: email,
+      password: password,
+      role: role,
+    });
+  }
+
+  public updateUserAdmin(
+    id: string,
+    fullName: string,
+    email: string,
+    role: string,
+    password: string
+  ) {
+    return this._http.patch(`${URL}/auth/update-admin/${id}`, {
+      fullName: fullName,
+      email: email,
+      role: role,
+      password: password,
+    });
+  }
+
+  public deleteUserAdmin(id: string) {
+    return this._http.delete(`${URL}/auth/${id}`);
+  }
+
+  public getUsers(): Observable<User[]> {
+    return this._http.get<User[]>(`${URL}/auth`);
+  }
+
+  public getUserById(id: string): Observable<User> {
+    return this._http.get<User>(`${URL}/auth/${id}`);
   }
 
   public register(
@@ -81,7 +122,7 @@ export class Auth {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      this.logout();
+      this._authStatus.set('not-authenticated');
       return of(false);
     }
 

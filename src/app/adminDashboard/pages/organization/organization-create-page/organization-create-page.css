@@ -1,0 +1,13 @@
+.organization-form__title {
+  text-align: center;
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.organization-form__description {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}

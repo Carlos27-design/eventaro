@@ -1,0 +1,68 @@
+<div class="organization-list">
+  <table class="organization-list__table">
+    <thead class="organization-list__head">
+      <tr class="organization-list__row">
+        <th class="organization-list__cell organization-list__cell--header">
+          Nombre
+        </th>
+        <th class="organization-list__cell organization-list__cell--header">
+          Descripción
+        </th>
+        <th class="organization-list__cell organization-list__cell--header">
+          Email
+        </th>
+        <th class="organization-list__cell organization-list__cell--header">
+          Acciones
+        </th>
+      </tr>
+    </thead>
+    <tbody class="organization-list__body">
+      @if(organizations()){
+      <!--  -->
+      @for(organization of organizations(); track organization.id){
+      <tr class="organization-list__row">
+        <td class="organization-list__cell">{{organization.name}}</td>
+        <td class="organization-list__cell">{{organization.description}}</td>
+        <td class="organization-list__cell">{{organization.email}}</td>
+        <td class="organization-list__cell organization-list__cell--actions">
+          <button
+            [routerLink]="['/admin/update-organization', organization.id]"
+          >
+            Editar
+          </button>
+          <button (click)="openDialog(organization.id)">Eliminar</button>
+        </td>
+      </tr>
+      }
+      <!--  -->
+      }
+    </tbody>
+  </table>
+  @if(isModalOpen()){
+  <app-delete
+    [message]="message()"
+    (close)="closeDialog()"
+    (confirm)="deleteOrganizationConfirm()"
+  />
+  }
+
+  <!--  -->
+  @if(showSnackBar()){
+  <div class="snackbar">Organización Eliminada correctamente</div>
+  }
+
+  <!--  -->
+
+  <div class="organization-list__pagination">
+    <button (click)="prevPage()" [disabled]="currentPageSignal === 1">
+      Anterior
+    </button>
+    <span>Página {{ currentPageSignal }} de {{ totalPages() }}</span>
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPageSignal === totalPages()"
+    >
+      Siguiente
+    </button>
+  </div>
+</div>

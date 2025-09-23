@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Event } from '../../interfaces/event';
+import { Events } from '../../interfaces/event';
 import { EventImagePipe } from '../../pipes/event-image-pipe';
 import { SlicePipe } from '@angular/common';
 
@@ -11,5 +11,5 @@ import { SlicePipe } from '@angular/common';
   styleUrl: './event-card.css',
 })
 export class EventCard {
-  public event = input.required<Event>();
+  public event = input.required<Events>();
 }

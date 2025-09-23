@@ -1,0 +1,113 @@
+<div class="update-event">
+  <div class="update-event__card">
+    <img
+      class="update-event__image"
+      [src]="tempImages() | eventImage"
+      alt="event().name"
+    />
+    <form class="update-event__form" [formGroup]="eventForm">
+      <div class="update-event__group">
+        <label for="name" class="update-event__label">Nombre del Evento</label>
+        <input
+          type="text"
+          id="name"
+          class="update-event__input"
+          formControlName="name"
+        />
+      </div>
+      <div class="update-event__group">
+        <label for="description" class="update-event__label">Descripción</label>
+        <textarea
+          name="description"
+          id="description"
+          class="update-event__input"
+          formControlName="description"
+        ></textarea>
+      </div>
+      <div class="update-event__group">
+        <label for="initialDate" class="update-event__label"
+          >Fecha de inicio</label
+        >
+        <input
+          type="date"
+          id="initialDate"
+          class="update-event__input"
+          formControlName="initialDate"
+        />
+      </div>
+      <div class="update-event__group">
+        <label for="finalDate" class="update-event__label">Fecha de fin</label>
+        <input
+          type="date"
+          id="finalDate"
+          class="update-event__input"
+          formControlName="finalDate"
+        />
+      </div>
+      <div class="update-event__group">
+        <label for="ubication" class="update-event__label">Ubicación</label>
+        <input
+          type="text"
+          id="ubication"
+          class="update-event__input"
+          formControlName="ubication"
+        />
+      </div>
+      <div class="update-event__group">
+        <label for="organization" class="update-event__label"
+          >Organización</label
+        >
+        <select
+          type="text"
+          id="organization"
+          class="update-event__input"
+          formControlName="organizationId"
+        >
+          <option value="">Seleccion un organización</option>
+          @for (organization of organizationsLoad(); track $index) {
+          <option [value]="organization.id">{{organization.name}}</option>
+          }
+        </select>
+      </div>
+      <div class="update-event__group">
+        <label for="typeEvent" class="update-event__label"
+          >Tipo de evento</label
+        >
+        <select
+          type="text"
+          id="typeEvent"
+          class="update-event__input"
+          formControlName="typeEventId"
+        >
+          <option value="">Seleccion un tipo de evento</option>
+          @for (typeEvent of typeEventsLoad(); track $index) {
+          <option [value]="typeEvent.id">{{typeEvent.name}}</option>
+          }
+        </select>
+      </div>
+      <div class="update-event__group">
+        <label for="image" class="update-event__label">Imagen</label>
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFilesChanged($event)"
+          multiple
+          class="update-event__input"
+          formControlName="images"
+        />
+      </div>
+
+      @if(showDialog()){
+      <app-update (close)="closeDialog()" (confirm)="onSubmit()" />
+      }
+      <!--  -->
+      @if(showSnackBar()){
+      <div class="snackbar">Evento actualizado correctamente</div>
+      }
+
+      <button type="submit" (click)="openDialog()" class="update-event__button">
+        Actualizar
+      </button>
+    </form>
+  </div>
+</div>

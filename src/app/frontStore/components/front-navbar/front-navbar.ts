@@ -1,7 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { TypeEvent } from '../../../typeEvent/interfaces/type-event';
-import { TypeEventService } from '../../../typeEvent/services/type-event';
-import { RouterLink } from '@angular/router';
+import { TypeEventService } from '../../../typeEvent/services/type-event-data';
+import { Router, RouterLink } from '@angular/router';
+import { AuthData } from '../../../auth/services/auth-data';
 
 @Component({
   selector: 'app-front-navbar',
@@ -11,6 +12,10 @@ import { RouterLink } from '@angular/router';
 })
 export class FrontNavbar {
   private readonly _typeEventService = inject(TypeEventService);
+
+  public readonly authService = inject(AuthData);
+
+  private readonly _router = inject(Router);
 
   public routes = signal<TypeEvent[]>([]);
 
@@ -23,5 +28,10 @@ export class FrontNavbar {
       next: (resp) => this.routes.set(resp),
       error: (error) => console.error(error),
     });
+  }
+
+  public logout() {
+    this.authService.logout();
+    this._router.navigate(['/']);
   }
 }

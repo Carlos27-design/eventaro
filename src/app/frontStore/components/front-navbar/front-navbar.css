@@ -1,11 +1,14 @@
 .navbar {
-  background-color: #007bff;
-  padding: 1rem;
-  color: white;
-  text-align: center;
   position: sticky;
   top: 0;
   z-index: 1000;
+  background-color: #007bff;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .navbar__title {
@@ -14,32 +17,77 @@
   font-weight: 600;
 }
 
-/* Scroll horizontal visible */
+.navbar__user-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar__user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar__user--name {
+  margin: 0;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.navbar__login--btn,
+.navbar__logout--btn,
+.navbar__admin--btn,
+.navbar__organizer--btn,
+.navbar__user--btn {
+  background-color: white;
+  color: #007bff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar__login--btn:hover,
+.navbar__logout--btn:hover,
+.navbar__admin--btn:hover,
+.navbar__organizer--btn:hover,
+.navbar__user--btn:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
 .event-scroll {
+  position: sticky;
+  top: 56px;
+  z-index: 999;
+  background-color: white;
   display: flex;
   overflow-x: auto;
-  padding: 0.75rem 1rem;
+  overflow-y: hidden;
   gap: 1rem;
-  background-color: #fff;
+  padding: 0.75rem 1rem;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  scrollbar-width: auto; /* Firefox */
 }
 
 .event-scroll::-webkit-scrollbar {
   height: 6px;
 }
-
 .event-scroll::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 3px;
 }
-
 .event-scroll::-webkit-scrollbar-track {
   background-color: #f0f0f0;
 }
 
-/* Botones de tipo evento */
 .event-scroll__button {
   flex: 0 0 auto;
   padding: 0.5rem 1rem;
@@ -47,19 +95,39 @@
   border-radius: 20px;
   background-color: #e0e0e0;
   color: #333;
-  cursor: pointer;
   white-space: nowrap;
+  cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
-  font-size: 0.95rem;
 }
-
 .event-scroll__button:hover {
   background-color: #333;
   color: #fff;
 }
 
-/* Botón activo opcional */
-.event-scroll__button--active {
-  background-color: #007bff;
-  color: white;
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.75rem;
+  }
+
+  .navbar__title {
+    font-size: 1.5rem;
+  }
+
+  .navbar__user-group {
+    gap: 0.5rem;
+  }
+
+  .navbar__user--name {
+    font-size: 1rem;
+  }
+
+  .navbar__login--btn,
+  .navbar__logout--btn,
+  .navbar__admin--btn,
+  .navbar__organizer--btn,
+  .navbar__user--btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
 }

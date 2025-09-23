@@ -1,0 +1,45 @@
+<div class="generate-qr">
+  <div class="generate-qr__card">
+    <h3 class="generate-qr__title">
+      Qr de la inscripción a {{inscription()?.event?.name}}
+    </h3>
+  </div>
+
+  @if(inscription()?.token){
+  <div class="generate-qr__qr-wrapper">
+    <qrcode
+      [qrdata]="inscription()!.token"
+      [width]="200"
+      [errorCorrectionLevel]="'M'"
+      class="generate-qr__qr"
+    />
+    <p class="generate-qr__qr-text">Escanea este QR para tu inscripción</p>
+  </div>
+  }
+  <!--  -->
+  @else {
+  <div class="generate-qr__error">
+    <p class="generate-qr__error-message">
+      No se pudo generar el qr de la inscripción
+    </p>
+  </div>
+  }
+
+  <div class="generate-qr__info">
+    <p>
+      <strong>Fecha:</strong> {{inscription()?.dateInscription | date:
+      "dd/MM/yyyy"}}
+    </p>
+    <p><strong>Ubicación:</strong> {{inscription()?.event?.ubication?.name}}</p>
+    <p>
+      <strong>Organización:</strong>
+      {{inscription()?.event?.organization?.name}}
+    </p>
+    <p><strong>Descripción:</strong> {{inscription()?.event?.description}}</p>
+  </div>
+
+  <div class="generate-qr__map-wrapper">
+    <h4 class="generate-qr__map-title">Ubicación del evento</h4>
+    <div id="map" class="generate-qr__map"></div>
+  </div>
+</div>

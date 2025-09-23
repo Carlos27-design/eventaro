@@ -1,0 +1,6 @@
+<h2 class="user-list__title">Listado de Usuarios</h2>
+
+<app-table-user
+  [users]="usersResource.value()"
+  [reload]="reloadUsers.bind(this)"
+/>

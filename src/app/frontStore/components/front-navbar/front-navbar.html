@@ -1,10 +1,45 @@
 <nav class="navbar">
   <h2 class="navbar__title">Eventaro</h2>
+
+  <!--  -->
+  @if(authService.authStatus() === 'authenticated'){
+  <div class="navbar__user--group">
+    <p class="navbar__user--name">
+      Bienvenido, {{authService.user()?.fullName}}
+    </p>
+    <!-- ADMIN -->
+    @if(authService.isAdmin()){
+    <button class="navbar__admin--btn" [routerLink]="['/admin/events']">
+      Panel de Administración
+    </button>
+    }
+    <!-- ORGANIZER -->
+    @if(authService.isOrganizer()){
+    <button class="navbar__organizer--btn" [routerLink]="['/create-event']">
+      Crear Evento
+    </button>
+    }
+
+    <button class="navbar__user--btn" [routerLink]="['/inscriptions']">
+      Ver inscripciones
+    </button>
+    <!--  -->
+    <button class="navbar__logout--btn" (click)="logout()">
+      Cerrar Sesión
+    </button>
+  </div>
+  }
+  <!--  -->
+  @else if (authService.authStatus() === 'not-authenticated') {
+  <button class="navbar__login--btn" [routerLink]="['/auth/login']">
+    Iniciar Sesión
+  </button>
+  }
 </nav>
 
 <div class="event-scroll">
   @for(routes of routes(); track routes.id){
-  <button class="event-scroll__button" routerLink="/event/{{routes.name}}">
+  <button class="event-scroll__button" routerLink="/events/{{routes.name}}">
     {{routes.name}}
   </button>
   }
